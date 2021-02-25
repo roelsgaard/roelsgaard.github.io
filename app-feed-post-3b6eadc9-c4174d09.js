@@ -1,4 +1,4 @@
-import{L as e,c as t,h as o,_ as s,p as a,a as i,b as d}from"./app-index-995b2a63.js";class n{static calculateTotalComments(e){return!e.comments||e.comments.data.length<=0?0:e.comments.data.reduce((e,t)=>e+t.comment_count,e.comments.data.length)}}const r={method:"GET",headers:{Accept:"application/json","Content-Type":"application/json"}};class c{constructor(){this.feedData=[]}static getInstance(){return c.instance||(c.instance=new c),c.instance}get feed(){return this.feedData}get hasMore(){return void 0!==this.feedPaging.next}async init(){try{const e="updated_time,created_time,story,message,link,source,full_picture,icon,name,picture,type,comments{comment_count},from&limit=2",t=await fetch(`https://graph.facebook.com/${d.facebook.apiVersion}/${d.facebook.groupId}/feed?fields=${e}&access_token=${d.facebook.accessToken}`,r),o=await t.json();return this.feedData=o.data,this.feedPaging=o.paging,this.feedData}catch(e){throw console.error(e),e}}async loadMore(){const e=await fetch(this.feedPaging.next+"&limit=2",r),t=await e.json();this.feedData=this.feedData.concat(t.data),this.feedPaging=t.paging}}const f=c.getInstance();let l=class extends e{constructor(){super(),this.feed=[]}static get styles(){return t`
+import{L as e,c as t,h as o,_ as s,p as d,a as r}from"./app-index-b8a41673.js";import{F as i,a,b as n}from"./formats-0e0e380d-2ff868c2.js";const c=i.getInstance();let f=class extends e{constructor(){super(),this.feed=[]}static get styles(){return t`
       .feed {
         display: flex;
         flex-direction: column;
@@ -92,9 +92,9 @@ import{L as e,c as t,h as o,_ as s,p as a,a as i,b as d}from"./app-index-995b2a6
         padding: 10px;
         font-size: 1.1em;
       }
-    `}connectedCallback(){super.connectedCallback(),this.getFeed()}async getFeed(){await f.init(),this.feed=f.feed}renderHeader(e){return o`
+    `}connectedCallback(){super.connectedCallback(),this.getFeed()}async getFeed(){await c.init(),this.feed=c.feed,this.hasMoreData=c.hasMore}renderHeader(e){return o`
       <div class="feed-post-from">${e.from.name}</div>
-      <div class="feed-post-time">${class{static dateTime(e){return new Date(e).toLocaleString()}}.dateTime(e.created_time)}</div>
+      <div class="feed-post-time">${a.dateTime(e.created_time)}</div>
     `}renderVideo(e){if(e)return e.includes("youtube")?o`
         <div class="feed-post-video-container">
           <iframe class="feed-post-video" src="${e}" frameborder="0" allowfullscreen></iframe>
@@ -116,9 +116,9 @@ import{L as e,c as t,h as o,_ as s,p as a,a as i,b as d}from"./app-index-995b2a6
       <button class="feed-post-show-more">
         Vis mere
       </button>
-    `}renderLoadMore(){if(f.hasMore)return o`
+    `}renderLoadMore(){if(this.hasMoreData)return o`
       <button class="feed-load-more" @click="${this.loadMore}">Hent flere</button>
-    `}async loadMore(){await f.loadMore(),this.feed=f.feed}render(){return o`
+    `}async loadMore(){await c.loadMore(),this.feed=c.feed,this.hasMoreData=c.hasMore}render(){return o`
       <div class="feed">
         ${this.feed.map(e=>o`
           <div class="feed-post">
@@ -136,4 +136,4 @@ import{L as e,c as t,h as o,_ as s,p as a,a as i,b as d}from"./app-index-995b2a6
       `)}
       ${this.renderLoadMore()}
       </div>
-    `}};s([a({type:[n]})],l.prototype,"feed",void 0),l=s([i("app-feed")],l);export{l as AppFeed};
+    `}};s([d({type:[n]})],f.prototype,"feed",void 0),f=s([r("app-feed-post")],f);export{f as AppFeedPost};
