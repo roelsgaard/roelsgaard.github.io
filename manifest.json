@@ -1,8 +1,8 @@
 {
-  "name": "PWA Starter",
+  "name": "AppyFace",
   "display": "standalone",
   "start_url": "/",
-  "short_name": "starter",
+  "short_name": "appyface",
   "theme_color": "#E1477E",
   "description": "This is a PWA Starter app",
   "orientation": "any",
