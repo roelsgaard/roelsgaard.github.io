@@ -4,27 +4,27 @@
   "start_url": "/",
   "short_name": "appyface",
   "theme_color": "#E1477E",
-  "description": "This is a PWA Starter app",
+  "description": "This is an app for making facebook groups and pages accessible for non facebook users",
   "orientation": "any",
   "background_color": "#E1477E",
   "related_applications": [],
   "prefer_related_applications": false,
   "icons": [
     {
-      "src": "assets/icons/icon_512.png",
+      "src": "assets/icons/Assets.xcassets/AppIcon.appiconset/512.png",
       "sizes": "512x512"
     },
     {
-      "src": "assets/icons/icon_192.png",
-      "sizes": "192x192"
+      "src": "assets/icons/Assets.xcassets/AppIcon.appiconset/196.png",
+      "sizes": "196x196"
     },
     {
-      "src": "assets/icons/icon_48.png",
+      "src": "assets/icons/Assets.xcassets/AppIcon.appiconset/48.png",
       "sizes": "48x48"
     },
     {
-      "src": "assets/icons/icon_24.png",
-      "sizes": "24x24"
+      "src": "assets/icons/Assets.xcassets/AppIcon.appiconset/20.png",
+      "sizes": "20x20"
     }
   ],
   "screenshots": [
